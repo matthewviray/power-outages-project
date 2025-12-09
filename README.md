@@ -1,6 +1,4 @@
----
-title: "ower Outages: Analysis on Causes and Severity"
----
+
 
 # Power Outages: Analysis on Causes and Severity
 
