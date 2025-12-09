@@ -62,13 +62,18 @@ I looked through all the unique values and found rows that should be removed and
 
 This is the head of my cleaned outage dataset:
 
-|   YEAR |   MONTH | U.S._STATE   | NERC.REGION   | CAUSE.CATEGORY     |   OUTAGE.DURATION |   CUSTOMERS.AFFECTED |   TOTAL.SALES |
-|-------:|--------:|:-------------|:--------------|:-------------------|------------------:|---------------------:|--------------:|
-|   2011 |       7 | Minnesota    | MRO           | severe weather     |              3060 |                70000 |       6562520 |
-|   2014 |       5 | Minnesota    | MRO           | intentional attack |                 1 |                  nan |       5284231 |
-|   2010 |      10 | Minnesota    | MRO           | severe weather     |              3000 |                70000 |       5222116 |
-|   2012 |       6 | Minnesota    | MRO           | severe weather     |              2550 |                68200 |       5787064 |
-|   2015 |       7 | Minnesota    | MRO           | severe weather     |              1740 |               250000 |       5970339 |
+
+
+| YEAR | MONTH | U.S._STATE | NERC.REGION | CAUSE.CATEGORY     | OUTAGE.DURATION | CUSTOMERS.AFFECTED | TOTAL.SALES |
+|------|-------|------------|-------------|------------------|----------------|------------------|-------------|
+| 2011 | 7     | Minnesota  | MRO         | severe weather    | 3060           | 70000            | 6562520     |
+| 2014 | 5     | Minnesota  | MRO         | intentional attack| 1              | nan              | 5284231     |
+| 2010 | 10    | Minnesota  | MRO         | severe weather    | 3000           | 70000            | 5222116     |
+| 2012 | 6     | Minnesota  | MRO         | severe weather    | 2550           | 68200            | 5787064     |
+| 2015 | 7     | Minnesota  | MRO         | severe weather    | 1740           | 250000           | 5970339     |
+
+
+
 # Univariate Plot 
 
 <iframe
