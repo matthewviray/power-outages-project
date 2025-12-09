@@ -60,7 +60,7 @@ I looked through all the unique values and found rows that should be removed and
 - I also combined the data and time of both the start and restoration of outages and so I combined
 `OUTAGE.START.DATE` and `OUTAGE.START.TIME` to make a new column `OUTAGE.START` that contains both the date and time. I did the same with `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME` to make `OUTAGE.RESTORATION` We also dropped the old columns to make the new ones after. 
 
-This is the head of my cleaned outage dataset:
+This is the head of my cleaned outage dataset and 8 of its columns:
 
 
 
@@ -74,7 +74,9 @@ This is the head of my cleaned outage dataset:
 
 
 
-# Univariate Plot 
+# Univariate Analysis 
+In this univariate analysis we are seeing a histogram of the distribution of the causes of major outages.
+This suggest we have very common causes of outages and also really rare causes of outages. Such as we see about half of our major outages is caused by severe weathered followed by intentional attacks. Where islanding and fuel supply emergency is the least likely cause of an outage. 
 
 <iframe
   src="assets/cause_distribution.html"
@@ -82,3 +84,69 @@ This is the head of my cleaned outage dataset:
   height="600"
   frameborder="0"
 ></iframe>
+
+# Bivariate Analysis
+In this bivariate analysis we the median outage duration of different causes of outages. We use median in this cause as the distribution of outage duration is skewed and there are many outliets in each category that makes the mean unrepresentative of the typical duration. We see the top causes of outage that leads to the most duration are severe weather and fuel supply emergency. 
+<iframe
+  src="assets/outage_cause.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+# Interesting Aggregates
+
+In this interesting aggregation we see that the different `NERC.REGIONS` could play a role on what outages are caused. THe distribution of the type of outages vary differently from North American Electric Reliability Corporation (NERC) regions meaning they all have their own characteristic that makes them either stronger or weaker for certain causes. 
+
+| CAUSE.CATEGORY                |   ECAR |   FRCC |   HECO |   HI |   MRO |   NPCC |   PR |   RFC |   SERC |   SPP |   TRE |   WECC |
+|:------------------------------|-------:|-------:|-------:|-----:|------:|-------:|-----:|------:|-------:|------:|------:|-------:|
+| equipment failure             |      2 |      4 |      0 |    0 |     0 |      2 |    0 |     8 |      7 |     1 |     2 |     31 |
+| fuel supply emergency         |      0 |      0 |      0 |    0 |     4 |     13 |    0 |     5 |      2 |     1 |     5 |     20 |
+| intentional attack            |      1 |      2 |      0 |    0 |    16 |     57 |    0 |   106 |     30 |     8 |     9 |    189 |
+| islanding                     |      0 |      0 |      0 |    0 |     2 |      1 |    0 |     5 |      1 |     2 |     0 |     35 |
+| public appeal                 |      0 |      3 |      0 |    0 |     2 |      4 |    0 |     3 |     13 |    16 |    16 |     12 |
+| severe weather                |     28 |     26 |      2 |    1 |    21 |     64 |    1 |   279 |    130 |    36 |    62 |    109 |
+| system operability disruption |      3 |      8 |      1 |    0 |     0 |      9 |    0 |    12 |     18 |     2 |    17 |     55 |
+
+# Assessment of missingness
+
+## NMAR analysis
+
+Customers Affected is NMAR data because the missingess is because of the value itself. One reason could be because different policies for different utilities. Such as companies might have either threshold and have specific polcies to report based on customers affected. For example, very high customers affected or really low customers affected may not be reported for some utilities as they could either delay or not report it at all. 
+What it's reported on can fail if its an outlier of extreme values for customers affected or if the company think its too low they might choose not to report it at all. Due to the data collection process the data is NMAR. 
+
+
+## Missing dependency
+
+<iframe
+  src="assets/climate_duration_missing.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/climate_duration_missing_distribution.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+# Hypothesis testing 
+
+<iframe
+  src="assets/cause_by_month.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/cause_by_month_distribution.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
