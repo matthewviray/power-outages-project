@@ -192,11 +192,13 @@ I choose these four features because:
 
 - `CLIMATE.REGION`: Different climate regions in the U.S. that consist of their own weather, vegetation, and grid infrastructure that are more likely to be imapcted by severe weather depending on the region 
 
+The preformance of my model was a accuracy score of 0.685 on the test set. Meaning about 68% of the time my prediction model was able to predict of the cause of an outage is either weather related or not. I feel that our prediction model did alright and we can improve it trying a different model, adding more features and searching for the best hyperparemeters which we do in the next section 
+
 
 
 # Final Model
 
-- `YEAR`: Every year there are different patterns and causes that could increase or decrease the chance of specific causes of outages. Especially as technology and equpiment evolves and improves there is a decrease of certain outages causes which these trends and patterns can show in years
+- `YEAR`: Every year there are different patterns and causes that could increase or decrease the chance of specific causes of outages. Especially as technology and equpiment evolves and improves there is a decrease of certain outages causes which these trends and patterns can show in years.
 
 - `ANOMALY.LEVEL`
 
