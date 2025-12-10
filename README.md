@@ -186,14 +186,24 @@ The base model I made is with a decision tree classifier, and it includes the fe
 I choose these four features because: 
 
 - `U.S._STATE`: From different states many consist of their own and unique features. Such as having different environments, intensity of weather, and  infrastructure. For example Texas and Florida with hurricans possible causing outages. New York and Minnesota having freeing weather and possible severe snow. 
-- `MONTH`: There are many weather related impact based on the month. For example there are four seasons in thesee months containing different types of weather where specific season its more common for all types of severe weather to cause outages. For example during the winter(Dec-Feb) theres state that could have harsh rain or severe impacting outages. Spring(Mar-May) possible having tornados and thunderstorms. So many of these months have different weather patterws that is likely to increase or decrease the chances for weather related outages to happen. 
+- `MONTH`: There are many weather related impact based on each month. In different months many different weather(Heavy Rain, tornados, Storms) can occur for each month making each month contribute to the chance of an outage being weather related. So, many of these months have different weather patterns that is likely to increase or decrease the chances for weather related outages to happen. 
 
 - `NERC.REGION`: Each region share electric grid characteristic and infrastructure design that manage and organize the power system. The weakness and strengths of each region is shared for these different regions which influence the cause of outage depending on what characteristic these regions contain and how weak they are compared to the different causes of outages
 
 - `CLIMATE.REGION`: Different climate regions in the U.S. that consist of their own weather, vegetation, and grid infrastructure that are more likely to be imapcted by severe weather depending on the region 
 
-- `YEAR`: Every year there are different patterns and causes that could increase or decrease the chance of specific causes of outages. Can show long-term patterns to reveal if outages has been frequently weather related or not recently or in the past one or more years. 
+
 
 # Final Model
+
+- `YEAR`: Every year there are different patterns and causes that could increase or decrease the chance of specific causes of outages. Especially as technology and equpiment evolves and improves there is a decrease of certain outages causes which these trends and patterns can show in years
+
+- `ANOMALY.LEVEL`
+
+- `URBAN SCORE`
+
+- `UTILITY SCORE`
+
+- 
 
 # Fairness Analysis
