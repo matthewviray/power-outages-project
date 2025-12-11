@@ -224,7 +224,8 @@ From our permutation test that I preformed using `ks_2samp`. With `ks_2samp` I w
 
 A hypothesis test that will have insight on the impact specific months have on causes of outages is testing the distribution of 2 months. I decided to choose January and July because both reflect different weather, seasons, and etc. January representing winter and July representing Summer. Choosing 2 completely opposite Months due to their complete opposite characteristics due to season and the weather/temperature that comes with it. To investigate what drives the causes of outages we preform a permutation test to see if specific Months drives different causes of outages. A permutation test with a test statistic of TVD because to see if the distribution of causes in these 2 are different we need TVD to quantify the difference between distributions and compare it to a distribution of difference if they weren't different to see if the difference is due to chance or there is a difference as in a obsereved statistic below the p-value of 0.05.
 
-## Null Hypothesis: The distribution of outages in the cause categories is the same in January and July and the difference is due to chance.
+## Null Hypothesis: 
+The distribution of outages in the cause categories is the same in January and July and the difference is due to chance.
 
 ## Althernate Hypothesis: 
 The distribution of outages in the cause categories is different in January and July.
