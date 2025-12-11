@@ -115,6 +115,7 @@ In this bivariate analysis of the box plots of the median outage duration of dif
 
 
 In this second bivariate analysis I use the median outage duration by month revealing how each month has their own characteristic, prominent ones such as weather due to the different seasons causing more or less outages. We can seen this as the months go by in the plots where there are increasing and decreasing patterns.
+(1-January,2-Febuary,...,11-Novemnber,12-December)
 
 <iframe
   src="assets/med_duration.html"
