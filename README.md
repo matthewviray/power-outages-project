@@ -94,14 +94,13 @@ In this second univariate analysis we see a bar plot that explains the distribut
   frameborder="0"
 ></iframe>
 
+This map reveals the distribution of outages by the climate regions in the U.S. We see climate regions such as Northeast and West having many outages and regions that are the opposite with only a few outages such as Southwest and West North Central. Suggesting that climate region has impact on outages happening due to their different features, such as geographical, weather, and etc. 
 <iframe
   src="assets/climate_region_outage_count_red_map_with_AK_HI.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
-
-
 
 
 # Bivariate Analysis
@@ -113,7 +112,6 @@ In this bivariate analysis of the box plots of the median outage duration of dif
   height="600"
   frameborder="0"
 ></iframe>
-
 
 
 In this second bivariate analysis I use the median outage duration by month revealing how each month has their own characteristic, prominent ones such as weather due to the different seasons causing more or less outages. We can seen this as the months go by in the plots where there are increasing and decreasing patterns.
@@ -152,9 +150,6 @@ In this second aggregation, we get to see significant statistic of each cause ca
 | system operability disruption |                69000 |             220   |            125 |       9.62991e+06 |   1.93772e+07 |          18761 |
 
 
-
-
-
 # Assessment of missingness
 
 In our cleaned dataset we have a few features with significant missing values such as `CUSTOMERS.AFFECTED` and `OUTAGE.DURATION`
@@ -172,11 +167,15 @@ We look at the `CLIMATE.REGION` column to analyze the missingness of `OUTAGE.DUR
 which we'll preform a permutation test to see if its missigness depends on `CLIMATE.REGION`. First I plotted the 
 distribution of `CLIMATE.REGION` that are missing and not missing. Then we will preformm a permutation test to test our hypotheses of:
 
-### Null Hypothesis: The distribution of `CLIMATE.REGION` is the same between missing and non missing `OUTAGE.DURATION` values
+### Null Hypothesis: 
+The distribution of `CLIMATE.REGION` is the same between missing and non missing `OUTAGE.DURATION` values
 
-### Alternate Hypothesis: The distribution of `CLIMATE.REGION` is different between missing and non missing `OUTAGE.DURATION` values
+### Alternate Hypothesis: 
+The distribution of `CLIMATE.REGION` is different between missing and non missing `OUTAGE.DURATION` values
 
-### Test statistic: The Total Variation Distance between the distribution of `CLIMATE.REGION` of missing and non missing `OUTAGE.DURATION` values
+### Test statistic: 
+The Total Variation Distance between the distribution of `CLIMATE.REGION` of missing and non missing `OUTAGE.DURATION` values
+
 <iframe
   src="assets/climate_duration_missing.html"
   width="800"
@@ -186,6 +185,7 @@ distribution of `CLIMATE.REGION` that are missing and not missing. Then we will 
 
 ### Results from our permutation test:
 From our permutation test that I preformed with 1000 shuffles in the `OUTAGE.DURATION` values. We reject the null hypothesis of `CLIMATE.REGION` distribution being the same between missing an non missing `OUTAGE.DURATION` values. We reject the null because we got a p-value of 0.00. So, the missigness of `OUTAGE.DURATION` depends on `CLIMATE.REGION`. Seen from the observed statistic in the distribution of tvd it's less than the significance level of 0.05. 
+
 <iframe
   src="assets/climate_duration_missing_distribution.html"
   width="800"
@@ -198,11 +198,14 @@ We look at the `AREAPCT_URBAN` column to analyze the missingness of `OUTAGE.DURA
 which we'll preform a permutation test to see if its missigness depends on `AREAPCT_URBAN`. First I plotted the 
 distribution of `AREAPCT_URBAN` that are missing and not missing. Then we will preformm a permutation test to test our hypotheses of:
 
-### Null Hypothesis: The distribution of `AREAPCT_URBAN` is the same between missing and non missing `AREAPCT_URBAN` values
+### Null Hypothesis: 
+The distribution of `AREAPCT_URBAN` is the same between missing and non missing `AREAPCT_URBAN` values
 
-### Alternate Hypothesis: The distribution of `AREAPCT_URBAN` is different between missing and non missing `AREAPCT_URBAN` values
+### Alternate Hypothesis: 
+The distribution of `AREAPCT_URBAN` is different between missing and non missing `AREAPCT_URBAN` values
 
-### Test statistic: The K-S stat(Maximum difference between two numerical cumulative distribution) between the distribution of `AREAPCT_URBAN` of missing and non missing `OUTAGE.DURATION` values
+### Test statistic: 
+The K-S stat(Maximum difference between two numerical cumulative distribution) between the distribution of `AREAPCT_URBAN` of missing and non missing `OUTAGE.DURATION` values
 
 <iframe
   src="assets/k2samp_urban_missingness.html"
@@ -222,9 +225,11 @@ A hypothesis test that will have insight on the impact specific months have on c
 
 ## Null Hypothesis: The distribution of outages in the cause categories is the same in January and July and the difference is due to chance.
 
-## Althernate Hypothesis: The distribution of outages in the cause categories is different in January and July.
+## Althernate Hypothesis: 
+The distribution of outages in the cause categories is different in January and July.
 
-## Test Statistic: The Total Variation Distance between the distribution of `CLIMATE.REGION` between January and July.
+## Test Statistic: 
+The Total Variation Distance between the distribution of `CLIMATE.REGION` between January and July.
 
 <iframe
   src="assets/cause_by_month.html"
@@ -262,7 +267,6 @@ I choose these four features because:
 - `CLIMATE.REGION`: Different climate regions in the U.S. that consist of their own weather, vegetation, and grid infrastructure that are more likely to be imapcted by severe weather depending on the region 
 
 The preformance of my model was a accuracy score of 0.685 on the test set. Meaning about 68% of the time my prediction model was able to predict of the cause of an outage is either weather related or not. I feel that our prediction model did alright and we can improve it trying a different model, adding more features and searching for the best hyperparemeters which we do in the next section 
-
 
 
 # Final Model
