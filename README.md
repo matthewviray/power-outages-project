@@ -76,7 +76,7 @@ This is the head of my cleaned outage dataset and 8 of its columns:
 
 # Univariate Analysis 
 In this univariate analysis we are seeing a histogram of the distribution of the causes of major outages.
-This suggest we have very common causes of outages and also really rare causes of outages. Such as we see about half of our major outages is caused by severe weathered followed by intentional attacks. Where islanding and fuel supply emergency is the least likely cause of an outage. 
+This suggest we have very common causes of outages and also really rare causes of outages. Such as we see about half of our major outages is caused by severe weather followed by intentional attacks. Where islanding and fuel supply emergency is the least likely cause of an outage. 
 
 <iframe
   src="assets/cause_distribution.html"
@@ -85,10 +85,41 @@ This suggest we have very common causes of outages and also really rare causes o
   frameborder="0"
 ></iframe>
 
+In this second univariate analysis we see a bar plot that explains the distribution of outages in which NERC Region they appear in. This showing WECC having the most outage, followed by RFC. In contrast PR with the least outages and second to that is HI. These regions have drastic different numbers of outages that can suggest different characteristics per region such as weather or infrastructure that impacts the frequency of outages. 
+
+<iframe
+  src="assets/nerc_region.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/climate_region_outage_count_red_map_with_AK_HI.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+
+
 # Bivariate Analysis
-In this bivariate analysis we the median outage duration of different causes of outages. We use median in this cause as the distribution of outage duration is skewed and there are many outliets in each category that makes the mean unrepresentative of the typical duration. We see the top causes of outage that leads to the most duration are severe weather and fuel supply emergency. 
+In this bivariate analysis of the box plots of the median outage duration of different causes of outages. We use median in this cause as the distribution of outage duration is skewed and there are many outliets in each category that makes the mean unrepresentative of the typical duration. We see the top causes of outage that leads to the most duration are severe weather and fuel supply emergency. 
+
 <iframe
   src="assets/outage_cause.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+
+In this second bivariate analysis I use the median outage duration by month revealing how each month has their own characteristic, prominent ones such as weather due to the different seasons causing more or less outages. We can seen this as the months go by in the plots where there are increasing and decreasing patterns.
+
+<iframe
+  src="assets/med_duration.html"
   width="800"
   height="600"
   frameborder="0"
@@ -107,6 +138,22 @@ In this interesting aggregation we see that the different `NERC.REGIONS` could p
 | public appeal                 |      0 |      3 |      0 |    0 |     2 |      4 |    0 |     3 |     13 |    16 |    16 |     12 |
 | severe weather                |     28 |     26 |      2 |    1 |    21 |     64 |    1 |   279 |    130 |    36 |    62 |    109 |
 | system operability disruption |      3 |      8 |      1 |    0 |     0 |      9 |    0 |    12 |     18 |     2 |    17 |     55 |
+
+In this second aggregation, we get to see significant statistic of each cause category. For example `CUSTOMERS.AFFECTED`, `OUTAGE.DURATION`, `OUTAGE_COUNT`, `TOTAL.CUSTOMERS`, `TOTAL.SALES`, `UTIL.REALGSP`. We use the median to find the typical value of each of these features as many are non normally distributed. From this aggregation we get to see how these features correlate especially finding connections between severity, economic characteristics, and the cause categories. For example, severe weather has a low `UTIL.REALGSP`(Utility industry economic output) compared to other causes but has the highest median amount of customers affected. 
+
+| CAUSE.CATEGORY                |   CUSTOMERS.AFFECTED |   OUTAGE.DURATION |   OUTAGE_COUNT |   TOTAL.CUSTOMERS |   TOTAL.SALES |   UTIL.REALGSP |
+|:------------------------------|---------------------:|------------------:|---------------:|------------------:|--------------:|---------------:|
+| equipment failure             |                51750 |             224   |             57 |       9.62991e+06 |   1.76482e+07 |          16403 |
+| fuel supply emergency         |                    1 |            3960   |             50 |       8.12107e+06 |   1.44e+07    |          19828 |
+| intentional attack            |                 2500 |              92.5 |            418 |       2.71339e+06 |   5.17755e+06 |           3832 |
+| islanding                     |                 4300 |              77.5 |             46 |       1.48323e+07 |   1.95601e+07 |          26426 |
+| public appeal                 |                15800 |             455   |             69 |       4.78342e+06 |   1.08462e+07 |           8716 |
+| severe weather                |               111600 |            2464   |            759 |       4.7874e+06  |   1.00348e+07 |           8332 |
+| system operability disruption |                69000 |             220   |            125 |       9.62991e+06 |   1.93772e+07 |          18761 |
+
+
+
+
 
 # Assessment of missingness
 
@@ -138,13 +185,35 @@ distribution of `CLIMATE.REGION` that are missing and not missing. Then we will 
 ></iframe>
 
 ### Results from our permutation test:
-From our permutation test that I preformed with 1000 shuffles in the `OUTAGE.DURATION` values. We reject the null hypothesis of `CLIMATE.REGION` distribution being the same between missing an non missing `OUTAGE.DURATION` values. We reject it because we got a p-value of 0.00. So, the missigness of `OUTAGE.DURATION` depends on `CLIMATE.REGION`. Seen from the observed statistic in the distribution of tvd it's less than the significance level of 0.05. 
+From our permutation test that I preformed with 1000 shuffles in the `OUTAGE.DURATION` values. We reject the null hypothesis of `CLIMATE.REGION` distribution being the same between missing an non missing `OUTAGE.DURATION` values. We reject the null because we got a p-value of 0.00. So, the missigness of `OUTAGE.DURATION` depends on `CLIMATE.REGION`. Seen from the observed statistic in the distribution of tvd it's less than the significance level of 0.05. 
 <iframe
   src="assets/climate_duration_missing_distribution.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+### Percentage of land area that is urban 
+We look at the `AREAPCT_URBAN` column to analyze the missingness of `OUTAGE.DURATION` as it contains missing values
+which we'll preform a permutation test to see if its missigness depends on `AREAPCT_URBAN`. First I plotted the 
+distribution of `AREAPCT_URBAN` that are missing and not missing. Then we will preformm a permutation test to test our hypotheses of:
+
+### Null Hypothesis: The distribution of `AREAPCT_URBAN` is the same between missing and non missing `AREAPCT_URBAN` values
+
+### Alternate Hypothesis: The distribution of `AREAPCT_URBAN` is different between missing and non missing `AREAPCT_URBAN` values
+
+### Test statistic: The K-S stat(Maximum difference between two numerical cumulative distribution) between the distribution of `AREAPCT_URBAN` of missing and non missing `OUTAGE.DURATION` values
+
+<iframe
+  src="assets/k2samp_urban_missingness.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+### Results from our K-S test:
+From our permutation test that I preformed using `ks_2samp`. With `ks_2samp` I was able to preform a Kolmogorov–Smirnov (KS) test and get a p-value to test my hypothesis with a 0.05 significance level. The p-value I got for this test was 0.0617. Meaning I fail to reject the null suggesting the distribution of `AREAPCT_URBAN` is the same between missing and non missing `AREAPCT_URBAN` values. Meaning the missingness of `OUTAGE.DURATION` is not due to `AREAPCT_URBAN`
 
 
 # Hypothesis testing 
@@ -198,14 +267,62 @@ The preformance of my model was a accuracy score of 0.685 on the test set. Meani
 
 # Final Model
 
+The new features we added in our final model are:
+
 - `YEAR`: Every year there are different patterns and causes that could increase or decrease the chance of specific causes of outages. Especially as technology and equpiment evolves and improves there is a decrease of certain outages causes which these trends and patterns can show in years.
 
-- `ANOMALY.LEVEL`
+- `ANOMALY.LEVEL`: Numerical feature that describes the weather and climate which could influence whethere an outage will be from severe weather as the `ANOMALY.LEVEL increase or decrease. 
 
-- `URBAN SCORE`
+- `utility_score`: Our utility score is based on `UTIL.REALGSP` and `TOTAL.CUSTOMERS` where we divided `UTIL.REALGSP` with `TOTAL.CUSTOMERS`. We made this feature as we had 3 columns that are redundant and all describe the utility characteristic in our outages. So we combined two of them to make a utility score that takes account of the customers while also describing the economic output into utility of these places per customer. A high utility score reveals a stronger and better funded utility that is usually better at handling against weather compared to weaker utilities as they more vulnerable due and less money is spent on it.  
 
-- `UTILITY SCORE`
+- `urban_score`: Same with our urban factors we had a lot of factors that were redundant that describes how urban the place is. So to describe how urban a place is with one feature we made a score using `POPDEN_URBAN` and `POPPCT_URBAN`.
+The higher the urban score is the more area is urban and the more dense those area are. How urban the area helps us understand how vulnerable an area is to weather outages due to many interconnected infrastructure.
 
-- 
+- `SEASON`: We have our month column that finds insight on specific months mostly use for finding weather that influence from a single month. However, with seasons where we mapped each month to a specific season(Fall, Spring, Winter, Summer) we're able to see how each season due to their different weather influence weather outage. 
 
+For our final model I decided to use a Random Forest Classifier as our first model was a Decision tree model. I used GridSearchCV to decide which hyperparameters to choose for my model. The hyperparameters we decided on were:
+
+| Hyperparameter          | Description                                 | Values Tested      |
+| ----------------------- | ------------------------------------------- | ------------------ |
+| **`n_estimators`**      | Number of trees in the forest               | 100, 200, 350, 500 |
+| **`max_depth`**         | Maximum depth of each tree                  | 5, 10, 15, 20      |
+| **`min_samples_split`** | Minimum samples required to split a node    | 2, 4, 6, 8         |
+| **`min_samples_leaf`**  | Minimum samples required at a leaf node     | 1, 2, 3, 4         |
+| **`max_features`**      | Number of features considered at each split | "sqrt", 0.5        |
+
+From our GridSearchCV results, we chose:
+
+- `randomforestclassifier__max_depth`: 10  
+- `randomforestclassifier__max_features`: 0.5  
+- `randomforestclassifier__min_samples_leaf`: 1  
+- `randomforestclassifier__min_samples_split`: 6  
+- `randomforestclassifier__n_estimators`: 200  
+
+In my final model the accuracy is now 0.821, which increased by around 0.146. Meaning our final model was able to predict correctly 82.1% of the time and improved by 14.6% from our base model. This final model has improved a lot from our base model, and this is a result from our improvement in accuracy in our final model. 
+
+ 
 # Fairness Analysis
+
+For the fairness analysis to see if my prediction will preform differently between two groups I decided to do it with areas with High utility investment and economic output comapred to low utility investment and economic output. This is crucial as the higher the investment, the more strong the infrastructure and services around utility will be to withstand against weather related outages. Comparing these two will help understand if our model is able to fairly make prediction between high utility and low utility. 
+
+We seperated our `UTIL.REALGSP` column into two groups by getting the median and seperating the two. Where the low utility group will be everything below the median and the high utility group is everything above the median. 
+
+## Null Hypothesis: 
+Model is fair in terms of recall between high utility economic output and low utility economic output
+
+## Alternative Hypothesis:
+Model is not fair in terms of recall between high utility economic output and low utility economic outputs
+
+## Test Statistic: 
+Our test statistic will be the absolute difference of recall between each group because we want to prioritize making sure we minimize false negative as we want to make sure that outages in the future that are due to severe weather are allocated and prepared for before any severe impact it has on the area.
+
+## Results: 
+I preformed a permutation test with 5000 repetitions and with a significance level of 0.05. We got a p-value of 0.978 revealing that we fail to reject that our model is unfair in recall when comparing high utility groups versus low utility groups
+
+<iframe
+  src="assets/permutation_test_fairness.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
