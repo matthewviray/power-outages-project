@@ -237,7 +237,7 @@ The Total Variation Distance between the distribution of `CLIMATE.REGION` betwee
 <iframe
   src="assets/cause_by_month.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -246,7 +246,7 @@ With a p-value of 0.005 and a significance value of 0.05 for our test. We reject
 <iframe
   src="assets/cause_by_month_distribution.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
