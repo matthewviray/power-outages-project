@@ -190,19 +190,19 @@ From our permutation test that I preformed with 1000 shuffles in the `OUTAGE.DUR
   frameborder="0"
 ></iframe>
 
-### Percentage of land area that's urban 
-We look at the `AREAPCT_URBAN` column to analyze the missingness of `OUTAGE.DURATION` as it contains missing values
-which we'll preform a permutation test to see if its missigness depends on `AREAPCT_URBAN`. First I plotted the 
+### Percentage of Total Population in the State that's is in urban area
+We look at the `POPPCT_URBAN` column to analyze the missingness of `OUTAGE.DURATION` as it contains missing values
+which we'll preform a permutation test to see if its missigness depends on `POPPCT_URBAN`. First I plotted the 
 distribution of `AREAPCT_URBAN` that are missing and not missing. Then we will preformm a permutation test to test our hypotheses of:
 
 ### Null Hypothesis: 
-The distribution of `AREAPCT_URBAN` is the same between missing and non missing `OUTAGE.DURATION` values.
+The distribution of `POPPCT_URBAN` is the same between missing and non missing `OUTAGE.DURATION` values.
 
 ### Alternate Hypothesis: 
-The distribution of `AREAPCT_URBAN` is different between missing and non missing `OUTAGE.DURATION` values.
+The distribution of `POPPCT_URBAN` is different between missing and non missing `OUTAGE.DURATION` values.
 
 ### Test statistic: 
-The K-S stat(Maximum difference between two numerical cumulative distribution) between the distribution of `AREAPCT_URBAN` of missing and non missing `OUTAGE.DURATION` values.
+The K-S stat(Maximum difference between two numerical cumulative distribution) between the distribution of `POPPCT_URBAN` of missing and non missing `OUTAGE.DURATION` values.
 
 <iframe
   src="assets/k2samp_urban_missingness.html"
@@ -212,7 +212,14 @@ The K-S stat(Maximum difference between two numerical cumulative distribution) b
 ></iframe>
 
 ### Results from our K-S test:
-From our test that I preformed using `ks_2samp`. With `ks_2samp` I was able to preform a Kolmogorov–Smirnov (KS) test and get a p-value to test my hypothesis with a 0.05 significance level. The p-value I got for this test was 0.0617. So, I fail to reject the null suggesting the distribution of `AREAPCT_URBAN` is the same between missing and non missing `AREAPCT_URBAN` values. Meaning the missingness of `OUTAGE.DURATION` is not dependent on `AREAPCT_URBAN`.
+From our test that I preformed using `ks_2samp`. With `ks_2samp` I use the Kolmogorov–Smirnov (KS) statistic for my permutation test in order to get a p-value to test my hypothesis with a 0.05 significance level. The p-value from my permutation test is 0.084 with 1000 repetitions. So, I fail to reject the null suggesting the distribution of `POPPCT_URBAN` is the same between missing and non missing `OUTAGE.DURATION` values. Meaning the missingness of `OUTAGE.DURATION` is not dependent on `POPPCT_URBAN`.
+
+<iframe
+  src="assets/k2samp_urban_missingness_distribution.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 # Hypothesis testing 
 
