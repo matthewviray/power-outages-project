@@ -101,7 +101,6 @@ This map reveals the distribution of outages by the climate regions in the U.S. 
   frameborder="0"
 ></iframe>
 
-
 # Bivariate Analysis
 In this bivariate analysis of the box plots of the median outage duration of different causes of outages. We use median in this as the distribution of outage duration is skewed and there are many outliers in each category that makes the mean unrepresentative of the typical duration. We see the top causes of outage that leads to the most duration are severe weather and fuel supply emergency. 
 
@@ -111,7 +110,6 @@ In this bivariate analysis of the box plots of the median outage duration of dif
   height="600"
   frameborder="0"
 ></iframe>
-
 
 In this second bivariate analysis I use the median outage duration by month revealing how each month has their own characteristic, prominent ones such as weather due to also patterns seen through multiple months due to different seasons causing more or less outages. We can seen this as the months go by in the plots where there are increasing and decreasing patterns.
 (1-January,2-Febuary,...,11-Novemnber,12-December)
@@ -192,7 +190,7 @@ From our permutation test that I preformed with 1000 shuffles in the `OUTAGE.DUR
   frameborder="0"
 ></iframe>
 
-### Percentage of land area that is urban 
+### Percentage of land area that's urban 
 We look at the `AREAPCT_URBAN` column to analyze the missingness of `OUTAGE.DURATION` as it contains missing values
 which we'll preform a permutation test to see if its missigness depends on `AREAPCT_URBAN`. First I plotted the 
 distribution of `AREAPCT_URBAN` that are missing and not missing. Then we will preformm a permutation test to test our hypotheses of:
@@ -213,22 +211,20 @@ The K-S stat(Maximum difference between two numerical cumulative distribution) b
   frameborder="0"
 ></iframe>
 
-
 ### Results from our K-S test:
 From our permutation test that I preformed using `ks_2samp`. With `ks_2samp` I was able to preform a Kolmogorov–Smirnov (KS) test and get a p-value to test my hypothesis with a 0.05 significance level. The p-value I got for this test was 0.0617. So, I fail to reject the null suggesting the distribution of `AREAPCT_URBAN` is the same between missing and non missing `AREAPCT_URBAN` values. Meaning the missingness of `OUTAGE.DURATION` is not dependent on `AREAPCT_URBAN`.
-
 
 # Hypothesis testing 
 
 A hypothesis test that will have insight on the impact specific months have on causes of outages is testing the distribution of 2 months. I decided to choose January and July because both reflect different weather, seasons, and etc. January representing Winter and July representing Summer. Choosing 2 completely opposite Months due to their complete opposite characteristics due to season and the weather/temperature that comes with it. To investigate what drives the causes of outages we preform a permutation test to see if specific Months drives different causes of outages. A permutation test with a test statistic of TVD to see if the distribution of causes in these 2 are different. We need TVD to quantify the difference between distributions and compare it by preforming a permutation test with a TVD test statistic to see if the difference is due to chance or there is a difference as in a obsereved statistic below the p-value of 0.05.
 
-## Null Hypothesis: 
+### Null Hypothesis: 
 The distribution of outages in the cause categories is the same in January and July and the difference is due to chance.
 
-## Althernate Hypothesis: 
+### Althernate Hypothesis: 
 The distribution of outages in the cause categories is different in January and July.
 
-## Test Statistic: 
+### Test Statistic: 
 The Total Variation Distance between the distribution of `CLIMATE.REGION` between January and July.
 
 <iframe
@@ -269,7 +265,6 @@ I choose these four features because:
 
 The preformance of my model was a accuracy score of 0.685 on the test set. Meaning about 68% of the time my prediction model was able to predict of the cause of an outage is either weather related or not. I feel that our prediction model did alright and we can improve it trying a different model, adding more features, and searching for the best hyperparemeters which we do in the next section 
 
-
 # Final Model
 
 The new features we added in our final model are:
@@ -304,7 +299,6 @@ From our GridSearchCV results, we chose:
 
 In my final model the accuracy 0.821 is now on our test set, which increased by around 0.146. Meaning our final model was able to predict correctly 82.1% of the time and improved by 14.6% from our base model. This final model has improved a lot from our base model, and this is a result from our improvement in accuracy in our final model. 
 
- 
 # Fairness Analysis
 
 For the fairness analysis to see if my prediction will preform differently between two groups I decided to do it with areas with High utility investment and economic output comapred to low utility investment and economic output. This is crucial as the higher the investment, the more strong the infrastructure and services around utility will be to withstand against weather related outages. Comparing these two will help understand if our model is able to fairly make prediction between high utility and low utility. 
