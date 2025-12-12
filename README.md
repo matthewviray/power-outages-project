@@ -157,8 +157,7 @@ In our cleaned dataset we have a few features with significant missing values su
 
 ## NMAR analysis
 
-Customers Affected is NMAR data because the missingess is because of the value itself. One reason could be because different policies for different utilities. Such as companies might have either threshold and have specific polcies to report based on customers affected. For example, very high customers affected or really low customers affected may not be reported for some utilities as they could either delay or not report it at all. 
-What it's reported on can fail if its an outlier of extreme values for customers affected or if the company think its too low they might choose not to report it at all. Due to the data collection process the data is NMAR. 
+Customers Affected is NMAR data because the missingess is because of the value itself. One reason could be because different policies for different utilities. Such as companies might have either threshold and have specific polcies to report based on customers affected. For example, very high customers affected or really low customers affected may not be reported for some utilities as they could either delay or not report it at all. This is possible because major outages are reported either due to high customers affected or a high firm load loss. Another reason could be it's reported on can fail if its an outlier of extreme values for customers affected or if the company think its too low they might choose not to report it at all. Due to the data collection process the data is NMAR. 
 
 
 ## Missing dependency
@@ -200,10 +199,10 @@ which we'll preform a permutation test to see if its missigness depends on `AREA
 distribution of `AREAPCT_URBAN` that are missing and not missing. Then we will preformm a permutation test to test our hypotheses of:
 
 ### Null Hypothesis: 
-The distribution of `AREAPCT_URBAN` is the same between missing and non missing `AREAPCT_URBAN` values
+The distribution of `AREAPCT_URBAN` is the same between missing and non missing `OUTAGE.DURATION` values
 
 ### Alternate Hypothesis: 
-The distribution of `AREAPCT_URBAN` is different between missing and non missing `AREAPCT_URBAN` values
+The distribution of `AREAPCT_URBAN` is different between missing and non missing `OUTAGE.DURATION` values
 
 ### Test statistic: 
 The K-S stat(Maximum difference between two numerical cumulative distribution) between the distribution of `AREAPCT_URBAN` of missing and non missing `OUTAGE.DURATION` values
