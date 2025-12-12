@@ -7,7 +7,7 @@ In this project I explore a dataset of major power outages in the U.S ranging fr
 
 This dataset is downloadable on: https://engineering.purdue.edu/LASCI/research-data/outages
 
-We will explore this dataset to answer the question: **what drives the causes of our major power outages and its severity in the U.S.** We do this through data analysis techniques to see what drives these causes and the severity of these outages. Possibly seeing drivers from geographical, economic, land-use, electricity consumption, and regional climatic features. After our analysis and the understanding we gained from these dataset we will make a prediction model to predict if a outage is caused by weather or not.
+We will explore this dataset to answer the question: **what drives the causes of our major power outages and its severity in the U.S.?** We do this through data analysis techniques to see what drives these causes and the severity of these outages. Possibly seeing drivers from geographical, economic, land-use, electricity consumption, and regional climatic features. After our analysis and the understanding we gained from these dataset we will make a prediction model to predict if a outage is caused by weather or not.
 
 This is crucial information because we are able to understand what drives the cause and severity of these outages, we are able to prepare and have a better chance to prevent the causes and severity of these outages. Understanding the features of our dataset and how it connects to outages causes and severity, we are able to allocate resources more efficiently and effectively to tailor for the cause and needs of specific location in the U.S. In addition, focus on the weak points and find ways to improve those weak points to prevent these outages. 
 
@@ -32,7 +32,7 @@ Our original dataset had 1534 rows of outages and their features and 20 columns 
 | `CUSTOMERS.AFFECTED` | Number of customers impacted by the outage. |
 | `TOTAL.SALES` | Total electricity sales for the utility/region. |
 | `TOTAL.CUSTOMERS` | Total number of customers served by the utility/region. |
-| `UTIL.REALGSP` | Real gross state product — economic output associated with the utility/region. |
+| `UTIL.REALGSP` | Real gross state product/economic output associated with the utility/region. |
 | `POPPCT_URBAN` | Percentage of population living in urban areas. |
 | `POPDEN_URBAN` | Urban population density. |
 | `AREAPCT_URBAN` | Percentage of land area classified as urban. |
@@ -54,10 +54,10 @@ I looked through all the unique values and found rows that should be removed and
 
 ### Transformations
 
-- I wanted to preform analyis/prediction modeling on weather outages compared to non weather outages to hopefully find insight and pattern between the two. I made a column `is_weather` which checked if `CAUSE.CATEGORY` is 'severe weather' or something else. If it is 'severe weather' the value of `is_weather` is 1 else 0.
+- I wanted to preform analyis/prediction modeling on weather outages compared to non weather outages to hopefully find insight and pattern between the two. I made a column `is_weather` which checks if `CAUSE.CATEGORY` is 'severe weather' or something else. If the cause is 'severe weather' the value of `is_weather` is 1 else 0.
 
 - I also combined the data and time of both the start and restoration of outages and so I combined
-`OUTAGE.START.DATE` and `OUTAGE.START.TIME` to make a new column `OUTAGE.START` that contains both the date and time. I did the same with `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME` to make `OUTAGE.RESTORATION` We also dropped the old columns to make the new ones after. 
+`OUTAGE.START.DATE` and `OUTAGE.START.TIME` to make a new column `OUTAGE.START` that contains both the date and time. I did the same with `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME` to make `OUTAGE.RESTORATION`. We also dropped the old columns to make the new ones after. 
 
 This is the head of my cleaned outage dataset and 8 of its columns:
 
@@ -154,7 +154,7 @@ In our cleaned dataset we have a few features with significant missing values su
 
 ## NMAR analysis
 
-Customers Affected is NMAR data because the missingess is because of the value itself. One reason could be because different policies for different utility companies. Such as companies might have either threshold and have specific polcies to report based on customers affected. For example, very high customers affected or really low customers affected may not be reported for some utilities as they could either delay or not report it at all. This is possible because major outages are reported either due to high customers affected or a high firm load loss. Another reason could be it's reported on can fail if its an outlier of extreme values for customers affected or if the company think its too low they might choose not to report it at all.
+Customers Affected is NMAR data because the missingess is because of the value itself. One reason could be because different policies for different utility companies. Such as companies might have either threshold and have specific polcies to report based on customers affected. For example, very large customers affected or really low customers affected may not be reported for some utilities as they could either delay or not report it at all. This is possible because major outages are reported either due to high customers affected or a high firm load loss. Another reason could be it's reported on can fail if its an outlier of extreme values for customers affected or if the company think its too low they might choose not to report it at all.
 
 
 ## Missing dependency
@@ -165,13 +165,13 @@ which we'll preform a permutation test to see if its missigness depends on `CLIM
 distribution of `CLIMATE.REGION` that are missing and not missing. Then we will preformm a permutation test to test our hypotheses of:
 
 ### Null Hypothesis: 
-The distribution of `CLIMATE.REGION` is the same between the two groups, missing and non missing `OUTAGE.DURATION` values
+The distribution of `CLIMATE.REGION` is the same between the two groups, missing and non missing `OUTAGE.DURATION` values.
 
 ### Alternate Hypothesis: 
-The distribution of `CLIMATE.REGION` is different between the two groups, missing and non missing `OUTAGE.DURATION` values
+The distribution of `CLIMATE.REGION` is different between the two groups, missing and non missing `OUTAGE.DURATION` values.
 
 ### Test statistic: 
-The Total Variation Distance between the distribution of `CLIMATE.REGION` of the two groups, missing and non missing `OUTAGE.DURATION` values
+The Total Variation Distance between the distribution of `CLIMATE.REGION` of the two groups, missing and non missing `OUTAGE.DURATION` values.
 
 <iframe
   src="assets/climate_duration_missing.html"
@@ -196,13 +196,13 @@ which we'll preform a permutation test to see if its missigness depends on `AREA
 distribution of `AREAPCT_URBAN` that are missing and not missing. Then we will preformm a permutation test to test our hypotheses of:
 
 ### Null Hypothesis: 
-The distribution of `AREAPCT_URBAN` is the same between missing and non missing `OUTAGE.DURATION` values
+The distribution of `AREAPCT_URBAN` is the same between missing and non missing `OUTAGE.DURATION` values.
 
 ### Alternate Hypothesis: 
-The distribution of `AREAPCT_URBAN` is different between missing and non missing `OUTAGE.DURATION` values
+The distribution of `AREAPCT_URBAN` is different between missing and non missing `OUTAGE.DURATION` values.
 
 ### Test statistic: 
-The K-S stat(Maximum difference between two numerical cumulative distribution) between the distribution of `AREAPCT_URBAN` of missing and non missing `OUTAGE.DURATION` values
+The K-S stat(Maximum difference between two numerical cumulative distribution) between the distribution of `AREAPCT_URBAN` of missing and non missing `OUTAGE.DURATION` values.
 
 <iframe
   src="assets/k2samp_urban_missingness.html"
@@ -212,7 +212,7 @@ The K-S stat(Maximum difference between two numerical cumulative distribution) b
 ></iframe>
 
 ### Results from our K-S test:
-From our permutation test that I preformed using `ks_2samp`. With `ks_2samp` I was able to preform a Kolmogorov–Smirnov (KS) test and get a p-value to test my hypothesis with a 0.05 significance level. The p-value I got for this test was 0.0617. So, I fail to reject the null suggesting the distribution of `AREAPCT_URBAN` is the same between missing and non missing `AREAPCT_URBAN` values. Meaning the missingness of `OUTAGE.DURATION` is not dependent on `AREAPCT_URBAN`.
+From our test that I preformed using `ks_2samp`. With `ks_2samp` I was able to preform a Kolmogorov–Smirnov (KS) test and get a p-value to test my hypothesis with a 0.05 significance level. The p-value I got for this test was 0.0617. So, I fail to reject the null suggesting the distribution of `AREAPCT_URBAN` is the same between missing and non missing `AREAPCT_URBAN` values. Meaning the missingness of `OUTAGE.DURATION` is not dependent on `AREAPCT_URBAN`.
 
 # Hypothesis testing 
 
@@ -247,7 +247,7 @@ With a p-value of 0.005 and a significance value of 0.05 for our test. We reject
 
 I plan to predict if the cause of a outage is due to weather or non-weather causes. This prediction will be useful to better pepare ahead of time and allocate resourses to the right locations based on the knowledge if in the future the outages are going to be weather related or not, especially as about half of the outages in the data is due to severe weather. This prediction problem will be classification and the type of classification it'll be is binary classification.  
 
-The variable we'll be predicting in our cleaned dataset is `is_weather` as the column has a 1 if the caused is weather realted else 0. We choose accuracy as our metric score because our dataset is balanced where accuracy wont be bias towards a major category. In our prediction model we can only use features that we have at the time of prediction so we'll try and use `MONTH`, `U.S._STATE`, `NERC.REGION`, `ANOMALY.LEVEL` , `CLIMATE.REGION`, `TOTAL.SALES`, `TOTAL.CUSTOMERS`,`UTIL.REALGSP`, `POPPCT_URBAN`, `POPDEN_URBAN`, and`AREAPCT_URBAN` for our prediction model.
+The variable we'll be predicting in our cleaned dataset is `is_weather` as the column has a 1 if the caused is weather realted else 0. We choose accuracy as our metric score because our dataset is balanced where accuracy wont be bias towards a major category. In our prediction model we can only use features that we have at the time of prediction so we'll try and use `MONTH`, `U.S._STATE`, `NERC.REGION`, `ANOMALY.LEVEL` , `CLIMATE.CATEGORY`, `CLIMATE.REGION`, `TOTAL.SALES`, `TOTAL.CUSTOMERS`,`UTIL.REALGSP`, `POPPCT_URBAN`, `POPDEN_URBAN`, and`AREAPCT_URBAN` for our prediction model.
 
 # Base Model
 
@@ -261,7 +261,7 @@ I choose these four features because:
 
 - `NERC.REGION`: Each region share electric grid characteristic and infrastructure design that manage and organize the power system. The weakness and strengths of each region is shared for these different regions which influence the cause of outage depending on what characteristic these regions contain and how weak they are compared to the different causes of outages.
 
-- `CLIMATE.REGION`: Different climate regions in the U.S. that consist of their own weather, vegetation, and grid infrastructure that are more likely to be imapcted by severe weather depending on the region 
+- `CLIMATE.REGION`: Different climate regions in the U.S. that consist of their own weather, vegetation, and grid infrastructure that are more likely to be imapcted by severe weather depending on the region .
 
 The preformance of my model was a accuracy score of 0.685 on the test set. Meaning about 68% of the time my prediction model was able to predict of the cause of an outage is either weather related or not. I feel that our prediction model did alright and we can improve it trying a different model, adding more features, and searching for the best hyperparemeters which we do in the next section 
 
@@ -306,16 +306,16 @@ For the fairness analysis to see if my prediction will preform differently betwe
 We seperated our `UTIL.REALGSP` column into two groups by getting the median and seperating the two. Where the low utility group will be everything below the median and the high utility group is everything above the median. 
 
 ## Null Hypothesis: 
-Model is fair in terms of recall between high utility economic output and low utility economic output
+Model is fair in terms of recall between high utility economic output and low utility economic output.
 
 ## Alternative Hypothesis:
-Model is not fair in terms of recall between high utility economic output and low utility economic outputs
+Model is not fair in terms of recall between high utility economic output and low utility economic outputs.
 
 ## Test Statistic: 
 Our test statistic will be the absolute difference of recall between each group because we want to prioritize making sure we minimize false negative as we want to make sure that outages in the future that are due to severe weather are allocated and prepared for before any severe impact it has on the area.
 
 ## Results: 
-I preformed a permutation test with 5000 repetitions and with a significance level of 0.05. We got a p-value of 0.978 revealing that we fail to reject that our model is fair in recall when comparing high utility groups versus low utility groups
+I preformed a permutation test with 5000 repetitions and with a significance level of 0.05. We got a p-value of 0.978 revealing that we fail to reject that our model is fair in recall when comparing high utility groups versus low utility groups.
 
 <iframe
   src="assets/permutation_test_fairness.html"
