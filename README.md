@@ -62,7 +62,6 @@ I looked through all the unique values and found rows that should be removed and
 This is the head of my cleaned outage dataset and 8 of its columns:
 
 
-
 | YEAR | MONTH | U.S._STATE | NERC.REGION | CAUSE.CATEGORY     | OUTAGE.DURATION | CUSTOMERS.AFFECTED | TOTAL.SALES |
 |------|-------|------------|-------------|------------------|----------------|------------------|-------------|
 | 2011 | 7     | Minnesota  | MRO         | severe weather    | 3060           | 70000            | 6562520     |
@@ -80,7 +79,7 @@ This suggest we have very common causes of outages and also really rare causes o
 <iframe
   src="assets/cause_distribution.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -89,7 +88,7 @@ In this second univariate analysis we see a bar plot that explains the distribut
 <iframe
   src="assets/nerc_region.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -98,7 +97,7 @@ This map reveals the distribution of outages by the climate regions in the U.S. 
 <iframe
   src="assets/climate_region_outage_count_red_map_with_AK_HI.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -108,7 +107,7 @@ In this bivariate analysis, the box plots of median outage duration for differen
 <iframe
   src="assets/outage_cause.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -118,9 +117,10 @@ In this second bivariate analysis I use the median outage duration by month reve
 <iframe
   src="assets/med_duration.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
+
 # Interesting Aggregates
 
 In this interesting aggregation we see that the different `NERC.REGIONS` could play a role on what outages are caused. The distribution of the type of outages vary differently from North American Electric Reliability Corporation (NERC) regions meaning they all have their own characteristic such as economic outpu towards utiity and infrastructure or geographical characteristic that makes them either stronger or weaker for certain causes. 
@@ -176,7 +176,7 @@ The Total Variation Distance between the distribution of `CLIMATE.REGION` of the
 <iframe
   src="assets/climate_duration_missing.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -186,7 +186,7 @@ From our permutation test that I preformed with 1000 shuffles in the `OUTAGE.DUR
 <iframe
   src="assets/climate_duration_missing_distribution.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -217,7 +217,7 @@ From our test that I preformed using `ks_2samp`. With `ks_2samp` I use the Kolmo
 <iframe
   src="assets/k2samp_urban_missingness_distribution.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
