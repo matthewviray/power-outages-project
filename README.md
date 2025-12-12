@@ -94,6 +94,7 @@ In this second univariate analysis we see a bar plot that explains the distribut
 ></iframe>
 
 This map reveals the distribution of outages by the climate regions in the U.S. We see climate regions such as Northeast and West having many outages and regions that are the opposite with only a few outages such as Southwest and West North Central. Suggesting that climate region has impact on outages happening due to their different features, such as geographical, weather, and etc. 
+
 <iframe
   src="assets/climate_region_outage_count_red_map_with_AK_HI.html"
   width="800"
@@ -102,7 +103,7 @@ This map reveals the distribution of outages by the climate regions in the U.S. 
 ></iframe>
 
 # Bivariate Analysis
-In this bivariate analysis of the box plots of the median outage duration of different causes of outages. We use median in this as the distribution of outage duration is skewed and there are many outliers in each category that makes the mean unrepresentative of the typical duration. We see the top causes of outage that leads to the most duration are severe weather and fuel supply emergency. 
+In this bivariate analysis, the box plots of median outage duration for different causes of outages are shown. We use median in this as the distribution of outage duration is skewed and there are many outliers in each category that makes the mean unrepresentative of the typical duration. We see the top causes of outage that leads to the most duration are severe weather and fuel supply emergency. 
 
 <iframe
   src="assets/outage_cause.html"
@@ -120,7 +121,6 @@ In this second bivariate analysis I use the median outage duration by month reve
   height="600"
   frameborder="0"
 ></iframe>
-
 # Interesting Aggregates
 
 In this interesting aggregation we see that the different `NERC.REGIONS` could play a role on what outages are caused. The distribution of the type of outages vary differently from North American Electric Reliability Corporation (NERC) regions meaning they all have their own characteristic such as economic outpu towards utiity and infrastructure or geographical characteristic that makes them either stronger or weaker for certain causes. 
@@ -190,7 +190,7 @@ From our permutation test that I preformed with 1000 shuffles in the `OUTAGE.DUR
   frameborder="0"
 ></iframe>
 
-### Percentage of Total Population in the State that's is in urban area
+### Percentage of Total Population in the State that's in a urban area
 We look at the `POPPCT_URBAN` column to analyze the missingness of `OUTAGE.DURATION` as it contains missing values
 which we'll preform a permutation test to see if its missigness depends on `POPPCT_URBAN`. First I plotted the 
 distribution of `AREAPCT_URBAN` that are missing and not missing. Then we will preformm a permutation test to test our hypotheses of:
@@ -209,6 +209,7 @@ The K-S stat(Maximum difference between two numerical cumulative distribution) b
   width="800"
   height="600"
   frameborder="0"
+  style="border:none; margin-bottom:-20px;"
 ></iframe>
 
 ### Results from our K-S test:
