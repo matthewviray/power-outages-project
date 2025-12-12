@@ -207,9 +207,8 @@ The K-S stat(Maximum difference between two numerical cumulative distribution) b
 <iframe
   src="assets/k2samp_urban_missingness.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
-  style="border:none; margin-bottom:-20px;"
 ></iframe>
 
 ### Results from our K-S test:
