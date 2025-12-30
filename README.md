@@ -4,7 +4,7 @@
 Author: Matthew Viray
 
 # Introduction
-In this project I explore a dataset of major power outages in the U.S ranging from January 200 all the way to July 2016 from many different states. The Departmenet of Energy categorized major outages as outages that either impacted at least 50,000 customers or had a unplanned firm load loss of at least 300MW. Containg a variety of features detailing the outage such as geographical, economic characteristics, electricy consumption, land-use, regional climatic info. 
+In this project I explore a dataset of major power outages in the U.S ranging from January 2000 all the way to July 2016 from many different states. The Departmenet of Energy categorized major outages as outages that either impacted at least 50,000 customers or had a unplanned firm load loss of at least 300MW. Containg a variety of features detailing the outage such as geographical, economic characteristics, electricy consumption, land-use, regional climatic info. 
 
 This dataset is downloadable on: https://engineering.purdue.edu/LASCI/research-data/outages
 
